@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>NewsWindow.qml</file>
+        <file>NewsWindowForm.ui.qml</file>
+        <file>NewsSplash.qml</file>
+        <file>NewsSplashForm.ui.qml</file>
+    </qresource>
+</RCC>

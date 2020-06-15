@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>newsapi.png</file>
+    </qresource>
+</RCC>
