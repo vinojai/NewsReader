@@ -12,15 +12,13 @@ Page {
     property alias webengineview: webengineview
     property alias backBtn: backBtn
     property alias fwdBtn: fwdBtn
-
-    SystemPalette { id: newsPalette; colorGroup: SystemPalette.Active }
     width: 1024
     height: 768
 
     Rectangle {
         id: newsRect
         anchors.fill: parent
-        color: newsPalette.dark
+        color: newsPalette.window
 
         ListView {
             id: headlinesList
@@ -42,6 +40,7 @@ Page {
                     id: delegateSep
                     orientation: "Horizontal"
                     anchors.top: parent.top
+                    anchors.topMargin: -7
                     anchors.left: parent.left
                     anchors.right: parent.right
                 }
@@ -59,6 +58,7 @@ Page {
                     anchors.top: delegateSep.bottom
                     anchors.bottom: parent.bottom
                     font.pointSize: 12
+                    color: (delegate.highlighted) ? newsPalette.highlightedText : newsPalette.windowText
                     text: modelData.title
                 }
                 Label {
@@ -69,6 +69,7 @@ Page {
                     anchors.topMargin: 30
                     anchors.bottom: parent.bottom
                     font.pointSize: 8
+                    color: title.color
                     text: "By: " + modelData.author
                 }
                 Connections {
@@ -85,7 +86,6 @@ Page {
                             webRectangle.visible = false
                         }
                         delegate.highlighted = true
-
                     }
                     onExited: {
                         delegate.highlighted = false
@@ -114,7 +114,7 @@ Page {
                 height: 30
                 width: parent.width
                 border {
-                    color: "black"
+                    color: newsPalette.windowText
                     width: 2
                 }
 
@@ -149,12 +149,13 @@ Page {
                     anchors.top: parent.top
                     anchors.topMargin: 8
                     height: 20
-                    width: 500
+                    width: 600
                     clip: true
                     flickableDirection: Flickable.HorizontalFlick
                     TextInput {
                         id: urlField
-                        font.pointSize: 10
+                        font.pointSize: 12
+                        color: newsPalette.windowText
                         text: webengineview.url
                         readOnly: true
                     }

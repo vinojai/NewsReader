@@ -3,12 +3,12 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.15
 
 Window {
-    SystemPalette { id: newsPalette; colorGroup: SystemPalette.Active }
-    id: newsSplash
+    SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
+    id: mainWindow
     visible: true
     width: 1024
     height: 768
-    color: newsPalette.dark
+    color: newsPalette.window
     title: qsTr("And now the News")
 
     Component.onCompleted: {

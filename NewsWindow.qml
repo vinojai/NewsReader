@@ -3,6 +3,7 @@ import QtQml 2.15
 import QtWebView 1.15
 
 NewsWindowForm {
+    SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
     Component.onCompleted: {
         print("Calling for News Headlines")
         news.getHeadlines()

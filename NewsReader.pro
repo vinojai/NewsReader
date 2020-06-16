@@ -19,6 +19,7 @@ SOURCES += \
         news.cpp
 
 RESOURCES += qml.qrc \
+    documentation.qrc \
     images.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model

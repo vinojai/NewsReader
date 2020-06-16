@@ -12,6 +12,7 @@ Item {
         anchors.verticalCenterOffset: -50
         font.italic: true
         font.pointSize: 20
+        color: newsPalette.windowText
         text: "Powered By:"
     }
     Image {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.2, 2020-06-14T22:22:04. -->
+<!-- Written by QtCreator 4.12.2, 2020-06-16T09:44:35. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -308,9 +308,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">NewsReader2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Volumes/Projects/Qt Projects/NewsReader/NewsReader.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Volumes/Projects/Qt Projects/NewsReader/NewsReader.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Volumes/Projects/GitHub/NewsReader/NewsReader.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Volumes/Projects/GitHub/NewsReader/NewsReader.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
