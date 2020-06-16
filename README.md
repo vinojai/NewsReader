@@ -7,4 +7,9 @@ Small Qt Quick demo app. Loads a list of news items from NewsApi.org and provide
 The user can then click on a story and QtWebEngine will render it.
 
 # Getting Started
+
+The splash page will display the following warning if the API key if not set:
+
+![api splash] [https://github.com/vinojai/NewsReader/blob/master/screencapture/splash-no-api-key.png?raw=true]
+
 For this application to work, you'll have to create an API key from newsapi.org. Create an environment variable called 'NEWS_API_KEY' and set your api key as its value.     
