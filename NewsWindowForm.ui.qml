@@ -16,14 +16,26 @@ Page {
     height: 768
 
     Rectangle {
+        id: toolRect
+        height: 75
+        width: newsWindow.width
+        color: newsPalette.shadow
+    }
+
+    Rectangle {
         id: newsRect
-        anchors.fill: parent
+        anchors.top: toolRect.bottom
+        anchors.bottom: newsWindow.bottom
+        anchors.right: newsWindow.right
+        anchors.left: newsWindow.left
+        height: newsWindow.height - toolRect.height
+        width: newsWindow.width
         color: newsPalette.window
 
         ListView {
             id: headlinesList
-            height: newsWindow.height
-            width: newsWindow.width
+            height: newsRect.height
+            width: newsRect.width
             clip: true
             delegate: ItemDelegate {
                 id: delegate
