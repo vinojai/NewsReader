@@ -33,8 +33,6 @@ Page {
             anchors.verticalCenterOffset: 5
             anchors.horizontalCenter: parent.horizontalCenter
 
-
-
             delegate: ItemDelegate {
                 width: metrics.width + 20
                 Text {
@@ -110,7 +108,8 @@ Page {
                     id: image
                     source: modelData.urlToImage
                     height: parent.height
-                    width: 100
+                    width: 150
+                    fillMode: Image.PreserveAspectCrop
                 }
 
                 Label {
