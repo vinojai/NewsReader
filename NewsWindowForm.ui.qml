@@ -36,6 +36,7 @@ Page {
 
 
             delegate: ItemDelegate {
+                width: metrics.width + 20
                 Text {
                     id: nameText
                     text: name
@@ -63,6 +64,8 @@ Page {
                     target: topMouse
                     onPressed: {
                         newsSelection.currentIndex = index
+                        news.setCategory(category)
+                        news.getHeadlines()
                     }
                 }
             }

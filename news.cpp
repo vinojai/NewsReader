@@ -26,7 +26,9 @@ void NewsClass::getHeadlines()
 {
     QTextStream(stdout) << "Getting News Headlines";
 
-    QUrl headlinesUrl(QString("http://newsapi.org/v2/top-headlines?country=us&apiKey=") + apiKey);
+    QString categoryString = QString("&category=%1").arg(m_category);
+
+    QUrl headlinesUrl(QString("http://%1/%2/%3?country=%4%5&apiKey=%6").arg(API_BASE, API_VERSION, HOME, COUNTRY, categoryString, apiKey));
     QNetworkRequest request;
     request.setUrl(headlinesUrl);
     request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");

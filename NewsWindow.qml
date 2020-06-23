@@ -6,6 +6,7 @@ NewsWindowForm {
     SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
     Component.onCompleted: {
         print("Calling for News Headlines")
+        news.setCategory("general")
         news.getHeadlines()
         newsSelection.currentIndex = 0
     }
@@ -42,19 +43,31 @@ NewsWindowForm {
 
         ListElement {
             name: "Home"
-            key: "BREAKING"
+            category: "general"
         }
         ListElement {
             name: "Business"
-            key: "BUSINESS"
+            category: "business"
         }
         ListElement {
             name: "Technology"
-            key: "TECHNOLOGY"
+            category: "technology"
         }
         ListElement {
             name: "Sports"
-            key: "SPORTS"
+            category: "sports"
+        }
+        ListElement {
+            name: "Health"
+            category: "health"
+        }
+        ListElement {
+            name: "Science"
+            category: "science"
+        }
+        ListElement {
+            name: "Entertainment"
+            category: "entertainment"
         }
     }
 }

@@ -4,7 +4,7 @@ A simple NewsApi viewer written in Qt Quick
 # What it Is
 Small Qt Quick demo app. Loads a list of news items from NewsApi.org and provides a UI to navigate between them.
 
-The app starts off with a list to browse news stories.
+The app starts off with a list to browse news stories. General news categories can be selected from the top navigation area. Selecting a new category will cause the list of news stories to update.
 
 ![News Story List](./screencapture/news-list.png)
 
