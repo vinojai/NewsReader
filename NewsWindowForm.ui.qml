@@ -112,6 +112,15 @@ Page {
                     fillMode: Image.PreserveAspectCrop
                 }
 
+                BusyIndicator {
+                    id: busy
+                    width: 50
+                    height: 50
+                    anchors.centerIn: image
+                    palette.dark: newsPalette.highlight
+                    running: image.status === Image.Loading
+                }
+
                 Label {
                     id: title
                     anchors.left: image.right
