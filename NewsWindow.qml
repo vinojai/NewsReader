@@ -7,6 +7,7 @@ NewsWindowForm {
     Component.onCompleted: {
         print("Calling for News Headlines")
         news.getHeadlines()
+        newsSelection.currentIndex = 0
     }
 
     ListModel {
@@ -33,6 +34,27 @@ NewsWindowForm {
 
         onClicked: {
             webengineview.goForward()
+        }
+    }
+
+    ListModel {
+        id: newsSelectionModel
+
+        ListElement {
+            name: "Home"
+            key: "BREAKING"
+        }
+        ListElement {
+            name: "Business"
+            key: "BUSINESS"
+        }
+        ListElement {
+            name: "Technology"
+            key: "TECHNOLOGY"
+        }
+        ListElement {
+            name: "Sports"
+            key: "SPORTS"
         }
     }
 }

@@ -12,23 +12,70 @@ Page {
     property alias webengineview: webengineview
     property alias backBtn: backBtn
     property alias fwdBtn: fwdBtn
+    property alias newsSelection:newsSelection
+
     width: 1024
     height: 768
 
     Rectangle {
-        id: toolRect
-        height: 75
+        id: topBarRect
+        height: 40
         width: newsWindow.width
         color: newsPalette.shadow
+
+        ListView {
+            id: newsSelection
+            model: newsSelectionModel
+            orientation: ListView.Horizontal
+            width: newsWindow.width - 100
+            height: parent.height - 10
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+
+
+
+            delegate: ItemDelegate {
+                Text {
+                    id: nameText
+                    text: name
+                    color: index == newsSelection.currentIndex ? "orange" : newsPalette.highlight
+                }
+                TextMetrics {
+                    id: metrics
+                    text: name
+                }
+                Rectangle {
+                    id: sep
+                    width: metrics.width
+                    height: 1
+                    anchors.top: nameText.bottom
+                    anchors.topMargin: 5
+                    border.color: nameText.color
+                    color: border.color
+                    visible: index == newsSelection.currentIndex
+                }
+                MouseArea {
+                    id: topMouse
+                    anchors.fill: nameText
+                }
+                Connections {
+                    target: topMouse
+                    onPressed: {
+                        newsSelection.currentIndex = index
+                    }
+                }
+            }
+        }
     }
 
     Rectangle {
         id: newsRect
-        anchors.top: toolRect.bottom
+        anchors.top: topBarRect.bottom
         anchors.bottom: newsWindow.bottom
         anchors.right: newsWindow.right
         anchors.left: newsWindow.left
-        height: newsWindow.height - toolRect.height
+        height: newsWindow.height - topBarRect.height
         width: newsWindow.width
         color: newsPalette.window
 
