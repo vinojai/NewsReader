@@ -6,6 +6,9 @@ Item {
     width: 1024
     height: 768
 
+    property alias kValidTxt: kValidTxt
+    property alias goBtn: goBtn
+
     Label {
         anchors.verticalCenter: newsSplash.verticalCenter
         anchors.horizontalCenter: newsSplash.horizontalCenter
@@ -26,9 +29,9 @@ Item {
         anchors.top: splashImg.bottom
         anchors.topMargin: 10
         anchors.horizontalCenter: newsSplash.horizontalCenter
-        height: 70
+        height: 80
         width: 420
-        visible: !isKey
+        visible: !isKeyValid
         Label {
             id: keyNotSet
             anchors.horizontalCenter: parent.horizontalCenter
@@ -49,30 +52,26 @@ Item {
             text: "https://newsapi.org"
         }
         Label {
+            id: follow
             anchors.top: keyNotSet.bottom
             anchors.left: newsapiorg.right
             text: " and follow the instructions to obtain your key"
         }
-        Label {
-            id: env
-            x: 0
-            y: 32
-            anchors.top: visit.bottom
-            anchors.left: rect.left
-            leftPadding: 54
-            text: "Then set the Environment variable "
+
+        TextField {
+            id: kValidTxt
+            anchors.top: follow.bottom
+            anchors.topMargin: 5
+            width: 300
+            placeholderText: qsTr("Enter NewsApi Key")
         }
-        Label {
-            id: key
-            anchors.top: env.top
-            anchors.left: env.right
-            font.italic: true
-            text: apikeykey
-        }
-        Label {
-            anchors.top: key.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: "with your Api key value and restart this app."
+        Button {
+            id: goBtn
+            anchors.top: follow.bottom
+            anchors.topMargin: 5
+            anchors.left: kValidTxt.right
+            enabled: false
+            text: "GO!"
         }
     }
 }

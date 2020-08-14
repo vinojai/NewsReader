@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QtWebEngine>
+#include <QFontDatabase>
 #include <qtwebengineglobal.h>
 #include <news.h>
 
@@ -12,6 +13,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
     QGuiApplication app(argc, argv);
+
+//    int id = QFontDatabase::addApplicationFont(":icofont/fonts/icofont.ttf");
+//    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+//    QFont icofont(family);
 
     // https://stackoverflow.com/questions/15035767/is-the-qt-5-dark-fusion-theme-available-for-windows
     QPalette darkPalette;
@@ -35,7 +40,6 @@ int main(int argc, char *argv[])
     darkPalette.setColor(QPalette::Disabled,QPalette::Highlight,QColor(80,80,80));
     darkPalette.setColor(QPalette::HighlightedText,Qt::black);
     darkPalette.setColor(QPalette::Disabled,QPalette::HighlightedText,QColor(127,127,127));
-
     app.setPalette(darkPalette);
 
     QtWebEngine::initialize();

@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Extras 1.4
 import QtWebEngine 1.0
 import QtGraphicalEffects 1.0
+import QtWebView 1.14
 
 Page {
     id: newsWindow
@@ -22,6 +23,13 @@ Page {
         height: 40
         width: newsWindow.width
         color: newsPalette.shadow
+
+        ///
+        /// ICOFONT test
+        ///
+        Text {
+            text: "test"
+        }
 
         ListView {
             id: newsSelection
@@ -95,7 +103,6 @@ Page {
                     anchors.fill: parent
                     hoverEnabled: true
                 }
-
                 ToolSeparator {
                     id: delegateSep
                     orientation: "Horizontal"
@@ -111,7 +118,6 @@ Page {
                     width: 150
                     fillMode: Image.PreserveAspectCrop
                 }
-
                 BusyIndicator {
                     id: busy
                     width: 50
@@ -120,7 +126,6 @@ Page {
                     palette.dark: newsPalette.highlight
                     running: image.status === Image.Loading
                 }
-
                 Label {
                     id: title
                     anchors.left: image.right

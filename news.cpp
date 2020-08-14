@@ -3,23 +3,38 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QFile>
+#include <QTextCodec>
+#include <QCoreApplication>
 #include "news.h"
 
 NewsClass::NewsClass(QObject *parent) : QObject(parent)
 {
     m_networkManager = new QNetworkAccessManager(this);
     connect(m_networkManager, &QNetworkAccessManager::finished, this, &NewsClass::onManagerFinished);
-    apiKey = qEnvironmentVariable(API_KEY_KEY);
+    QCoreApplication::setOrganizationName("QIIP");
+    QCoreApplication::setOrganizationDomain("qiip.com");
+    QCoreApplication::setApplicationName("NewsReader");
+//    m_settings;
 }
 
-bool NewsClass::isApiKeySet()
+bool NewsClass::isApiKeyExists()
 {
-    return qEnvironmentVariableIsSet(API_KEY_KEY);
+    QSettings settings("QIIP", "NewsReader");
+    return settings.contains("apikey");
 }
 
-QString NewsClass::getApiKeyName()
+QString NewsClass::getApiKey()
 {
-    return API_KEY_KEY;
+    QSettings settings("QIIP", "NewsReader");
+    QString apikey = settings.value("apikey").toString();
+    return apikey;
+}
+
+void NewsClass::setApiKey(QString key)
+{
+    QSettings settings("QIIP", "NewsReader");
+    settings.setValue("apikey", key);
 }
 
 void NewsClass::getHeadlines()
@@ -27,6 +42,8 @@ void NewsClass::getHeadlines()
     QTextStream(stdout) << "Getting News Headlines";
 
     QString categoryString = QString("&category=%1").arg(m_category);
+
+    QString apiKey = getApiKey();
 
     QUrl headlinesUrl(QString("http://%1/%2/%3?country=%4%5&apiKey=%6").arg(API_BASE, API_VERSION, HOME, COUNTRY, categoryString, apiKey));
     QNetworkRequest request;
@@ -62,6 +79,8 @@ void NewsClass::onManagerFinished(QNetworkReply *reply)
         articles = articlesDoc.toJson();
 
         emit dataReady(articles);
+    } else {
+        emit dataNotReady();
     }
 }
 

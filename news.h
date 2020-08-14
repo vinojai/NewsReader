@@ -5,6 +5,7 @@
 #include <QQmlContext>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QSettings>
 #include "QNetworkAccessManager"
 
 #define API_BASE "newsapi.org"
@@ -27,8 +28,9 @@ public:
     Q_INVOKABLE QByteArray readHeadlines() {
         return articles;
     }
-    Q_INVOKABLE bool isApiKeySet();
-    Q_INVOKABLE QString getApiKeyName();
+    Q_INVOKABLE bool isApiKeyExists();
+    Q_INVOKABLE QString getApiKey();
+    Q_INVOKABLE void setApiKey(QString key);
     Q_INVOKABLE void setCategory(QString category) {
         m_category = category;
     }
@@ -38,6 +40,7 @@ public slots:
 public: signals:
     void finished(QNetworkReply *reply);
     void dataReady(QByteArray &data);
+    void dataNotReady();
 
 private:
     QNetworkAccessManager* m_networkManager;
@@ -45,6 +48,7 @@ private:
     qint64 m_totalResults;
     QJsonArray m_articles;
     QString m_category;
+    QSettings m_settings;
 
 public:
     QByteArray articles;

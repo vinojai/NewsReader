@@ -1,6 +1,6 @@
-QT += quick webengine
+QT += quick webengine gui
 
-CONFIG += c++11
+CONFIG += c++11, app_bundle
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -37,4 +37,14 @@ FORMS +=
 
 HEADERS += \
     news.h
+
+DISTFILES += \
+    icofont/demo.html \
+    icofont/fonts/icofont.eot \
+    icofont/fonts/icofont.svg \
+    icofont/fonts/icofont.ttf \
+    icofont/fonts/icofont.woff \
+    icofont/fonts/icofont.woff2 \
+    icofont/icofont.css \
+    icofont/icofont.min.css
 

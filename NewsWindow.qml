@@ -19,7 +19,6 @@ NewsWindowForm {
         target: news
         onDataReady: {
             headlinesList.model = JSON.parse(news.readHeadlines())
-
         }
     }
 
@@ -38,6 +37,7 @@ NewsWindowForm {
         }
     }
 
+    // NewsApi list of categories
     ListModel {
         id: newsSelectionModel
 
