@@ -52,6 +52,20 @@ void NewsClass::getHeadlines()
     m_networkManager->get(request);
 }
 
+void NewsClass::search(QString searchQuery) {
+    QTextStream(stdout) << "Search News Headlines";
+
+//    QString categoryString = QString("&category=%1").arg(m_category);
+
+    QString apiKey = getApiKey();
+
+    QUrl headlinesUrl(QString("http://%1/%2/%3?q=%4&apiKey=%6").arg(API_BASE, API_VERSION, HOME, searchQuery, apiKey));
+    QNetworkRequest request;
+    request.setUrl(headlinesUrl);
+    request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
+    m_networkManager->get(request);
+}
+
 void NewsClass::onManagerFinished(QNetworkReply *reply)
 {
     if (reply->error() == QNetworkReply::NoError) {
@@ -83,4 +97,5 @@ void NewsClass::onManagerFinished(QNetworkReply *reply)
         emit dataNotReady();
     }
 }
+
 

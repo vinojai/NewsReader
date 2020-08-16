@@ -34,6 +34,8 @@ public:
     Q_INVOKABLE void setCategory(QString category) {
         m_category = category;
     }
+    Q_INVOKABLE void search(QString searchQuery);
+
 public slots:
     void onManagerFinished(QNetworkReply *reply);
 

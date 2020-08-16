@@ -70,4 +70,11 @@ NewsWindowForm {
             category: "entertainment"
         }
     }
+
+    Connections {
+        target: searchBtn
+        onClicked: {
+            news.search(searchInput.text)
+        }
+    }
 }

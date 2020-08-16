@@ -15,6 +15,7 @@ Page {
     property alias fwdBtn: fwdBtn
     property alias newsSelection:newsSelection
     property alias searchBtn: searchBtn
+    property alias searchInput: searchInput
 
     width: 1024
     height: 768
