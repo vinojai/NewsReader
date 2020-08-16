@@ -12,12 +12,12 @@ EQ            = =
 
 ####### Compiler, tools and options
 
-CC            = /Library/Developer/CommandLineTools/usr/bin/clang
-CXX           = /Library/Developer/CommandLineTools/usr/bin/clang++
+CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WEBENGINE_LIB -DQT_WEBENGINECORE_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QMLMODELS_LIB -DQT_WEBCHANNEL_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_POSITIONING_LIB -DQT_CORE_LIB
-CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wall -Wextra -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wall -Wextra -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../Media/Qt/5.15.0/clang_64/lib/QtWebEngine.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtWebEngineCore.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtQuick.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtGui.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtQmlModels.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtWebChannel.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtQml.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtNetwork.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtPositioning.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/mkspecs/macx-clang -F/Volumes/Media/Qt/5.15.0/clang_64/lib
+CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.13 -Wall -Wextra -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.13 -Wall -Wextra -fPIC $(DEFINES)
+INCPATH       = -I. -I../../../Media/Qt/5.15.0/clang_64/lib/QtWebEngine.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtWebEngineCore.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtQuick.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtGui.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtQmlModels.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtWebChannel.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtQml.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtNetwork.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtPositioning.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../Media/Qt/5.15.0/clang_64/mkspecs/macx-clang -F/Volumes/Media/Qt/5.15.0/clang_64/lib
 QMAKE         = /Volumes/Media/Qt/5.15.0/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -38,11 +38,11 @@ TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = NewsReader1.0.0
 DISTDIR = /Volumes/Projects/GitHub/NewsReader/.tmp/NewsReader1.0.0
-LINK          = /Library/Developer/CommandLineTools/usr/bin/clang++
-LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Volumes/Media/Qt/5.15.0/clang_64/lib
+LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
+LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.13 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Volumes/Media/Qt/5.15.0/clang_64/lib
 LIBS          = $(SUBLIBS) -F/Volumes/Media/Qt/5.15.0/clang_64/lib -framework QtWebEngine -framework QtWebEngineCore -framework QtQuick -framework QtGui -framework AppKit -framework Metal -framework QtQmlModels -framework QtWebChannel -framework QtQml -framework QtNetwork -framework QtPositioning -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
-AR            = /Library/Developer/CommandLineTools/usr/bin/ar cq
-RANLIB        = /Library/Developer/CommandLineTools/usr/bin/ranlib -s
+AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
+RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
 STRIP         = strip
 
@@ -54,14 +54,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		news.cpp qrc_qml.cpp \
-		qrc_appresources.cpp \
 		qrc_documentation.cpp \
 		qrc_images.cpp \
 		moc_news.cpp
 OBJECTS       = main.o \
 		news.o \
 		qrc_qml.o \
-		qrc_appresources.o \
 		qrc_documentation.o \
 		qrc_images.o \
 		moc_news.o
@@ -292,8 +290,8 @@ TARGET        = NewsReader.app/Contents/MacOS/NewsReader
 
 ####### Custom Variables
 EXPORT_QMAKE_MAC_SDK = macosx
-EXPORT_QMAKE_MAC_SDK_VERSION = 10.15.4
-EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
+EXPORT_QMAKE_MAC_SDK_VERSION = 10.15.6
+EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
 EXPORT_VALID_ARCHS = x86_64
 EXPORT_ACTIVE_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(ARCHS))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
@@ -521,7 +519,6 @@ Makefile: NewsReader.pro ../../../Media/Qt/5.15.0/clang_64/mkspecs/macx-clang/qm
 		../../../Media/Qt/5.15.0/clang_64/mkspecs/features/lex.prf \
 		NewsReader.pro \
 		qml.qrc \
-		appresources.qrc \
 		documentation.qrc \
 		images.qrc \
 		../../../Media/Qt/5.15.0/clang_64/lib/QtWebEngine.framework/Resources/QtWebEngine.prl \
@@ -748,7 +745,6 @@ Makefile: NewsReader.pro ../../../Media/Qt/5.15.0/clang_64/mkspecs/macx-clang/qm
 ../../../Media/Qt/5.15.0/clang_64/mkspecs/features/lex.prf:
 NewsReader.pro:
 qml.qrc:
-appresources.qrc:
 documentation.qrc:
 images.qrc:
 ../../../Media/Qt/5.15.0/clang_64/lib/QtWebEngine.framework/Resources/QtWebEngine.prl:
@@ -790,7 +786,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents qml.qrc appresources.qrc documentation.qrc images.qrc appresources.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents qml.qrc documentation.qrc images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Media/Qt/5.15.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents news.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp news.cpp $(DISTDIR)/
@@ -820,9 +816,9 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_qml.cpp qrc_appresources.cpp qrc_documentation.cpp qrc_images.cpp qrc_appresources.cpp
+compiler_rcc_make_all: qrc_qml.cpp qrc_documentation.cpp qrc_images.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_qml.cpp qrc_appresources.cpp qrc_documentation.cpp qrc_images.cpp qrc_appresources.cpp
+	-$(DEL_FILE) qrc_qml.cpp qrc_documentation.cpp qrc_images.cpp
 qrc_qml.cpp: qml.qrc \
 		../../../Media/Qt/5.15.0/clang_64/bin/rcc \
 		NewsWindowForm.ui.qml \
@@ -831,11 +827,6 @@ qrc_qml.cpp: qml.qrc \
 		NewsSplash.qml \
 		main.qml
 	/Volumes/Media/Qt/5.15.0/clang_64/bin/rcc -name qml qml.qrc -o qrc_qml.cpp
-
-qrc_appresources.cpp: appresources.qrc \
-		../../../Media/Qt/5.15.0/clang_64/bin/rcc \
-		apikey.txt
-	/Volumes/Media/Qt/5.15.0/clang_64/bin/rcc -name appresources appresources.qrc -o qrc_appresources.cpp
 
 qrc_documentation.cpp: documentation.qrc \
 		../../../Media/Qt/5.15.0/clang_64/bin/rcc \
@@ -848,16 +839,11 @@ qrc_images.cpp: images.qrc \
 		newsapi.png
 	/Volumes/Media/Qt/5.15.0/clang_64/bin/rcc -name images images.qrc -o qrc_images.cpp
 
-qrc_appresources.cpp: appresources.qrc \
-		../../../Media/Qt/5.15.0/clang_64/bin/rcc \
-		apikey.txt
-	/Volumes/Media/Qt/5.15.0/clang_64/bin/rcc -name appresources appresources.qrc -o qrc_appresources.cpp
-
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: ../../../Media/Qt/5.15.0/clang_64/mkspecs/features/data/dummy.cpp
-	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wall -Wextra -dM -E -o moc_predefs.h ../../../Media/Qt/5.15.0/clang_64/mkspecs/features/data/dummy.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.13 -Wall -Wextra -dM -E -o moc_predefs.h ../../../Media/Qt/5.15.0/clang_64/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_news.cpp
 compiler_moc_header_clean:
@@ -877,7 +863,7 @@ moc_news.cpp: news.h \
 		../../../Media/Qt/5.15.0/clang_64/lib/QtNetwork.framework/Headers/qnetworkaccessmanager.h \
 		moc_predefs.h \
 		../../../Media/Qt/5.15.0/clang_64/bin/moc
-	/Volumes/Media/Qt/5.15.0/clang_64/bin/moc $(DEFINES) --include /Volumes/Projects/GitHub/NewsReader/moc_predefs.h -I/Volumes/Media/Qt/5.15.0/clang_64/mkspecs/macx-clang -I/Volumes/Projects/GitHub/NewsReader -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtWebEngine.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtWebEngineCore.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtQuick.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtGui.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtQmlModels.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtWebChannel.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtQml.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtPositioning.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Volumes/Media/Qt/5.15.0/clang_64/lib news.h -o moc_news.cpp
+	/Volumes/Media/Qt/5.15.0/clang_64/bin/moc $(DEFINES) --include /Volumes/Projects/GitHub/NewsReader/moc_predefs.h -I/Volumes/Media/Qt/5.15.0/clang_64/mkspecs/macx-clang -I/Volumes/Projects/GitHub/NewsReader -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtWebEngine.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtWebEngineCore.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtQuick.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtGui.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtQmlModels.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtWebChannel.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtQml.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtPositioning.framework/Headers -I/Volumes/Media/Qt/5.15.0/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Volumes/Media/Qt/5.15.0/clang_64/lib news.h -o moc_news.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -948,9 +934,6 @@ news.o: news.cpp ../../../Media/Qt/5.15.0/clang_64/lib/QtNetwork.framework/Heade
 
 qrc_qml.o: qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qml.o qrc_qml.cpp
-
-qrc_appresources.o: qrc_appresources.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_appresources.o qrc_appresources.cpp
 
 qrc_documentation.o: qrc_documentation.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_documentation.o qrc_documentation.cpp

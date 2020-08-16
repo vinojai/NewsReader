@@ -20,4 +20,6 @@ The splash page will display the following warning if the API key if not set:
 
 ![Api No Key Splash](./screencapture/splash-no-api-key.png)
 
-For this application to work, you'll have to create an API key from newsapi.org. After creating your key, enter it in the field here. The app will remember it from then on,     
+For this application to work, you'll have to create an API key from newsapi.org. After creating your key, enter it in the field here. The app will remember it from then on.
+
+You can download a working binary for mac [here](https://drive.google.com/file/d/1DhExq-Beb6-lZYvGeqJI6-l0f6DUBOJW/view?usp=sharing)     
