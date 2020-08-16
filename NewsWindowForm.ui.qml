@@ -14,6 +14,7 @@ Page {
     property alias backBtn: backBtn
     property alias fwdBtn: fwdBtn
     property alias newsSelection:newsSelection
+    property alias searchBtn: searchBtn
 
     width: 1024
     height: 768
@@ -35,7 +36,7 @@ Page {
             id: newsSelection
             model: newsSelectionModel
             orientation: ListView.Horizontal
-            width: newsWindow.width - 100
+            width: newsWindow.width - 500
             height: parent.height - 10
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 5
@@ -75,6 +76,43 @@ Page {
                     }
                 }
             }
+        }
+        TextField {
+            id: searchInput
+            anchors.left: newsSelection.right
+            color: "orange"
+            placeholderText: "Search"
+            placeholderTextColor: newsPalette.highlight
+            background: Rectangle {
+                implicitWidth: 200
+                implicitHeight: 40
+                color: "black"
+                border.color: newsPalette.highlight
+            }
+        }
+        Button {
+            id: searchBtn
+            anchors.left: searchInput.right
+            text: "Go!"
+            width: 50
+            visible: searchInput.text.length
+            background: Rectangle {
+                implicitWidth: 200
+                implicitHeight: 40
+                color: "black"
+                border.color: newsPalette.highlight
+            }
+            contentItem: Text {
+                text: searchBtn.text
+                font: searchBtn.font
+                opacity: enabled ? 1.0 : 0.3
+                color: "orange"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                elide: Text.ElideRight
+            }
+
+
         }
     }
 
