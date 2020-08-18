@@ -45,7 +45,7 @@ Page {
             anchors.verticalCenter: topBarRect.verticalCenter
             anchors.left: topBarRect.left
             anchors.leftMargin: 30
-            visible: false // The "everything" newapu feature appears to be broken
+            visible: false // The "everything" NewsApi feature appears to be broken
             Button {
                 id: breakingNewsTypeBtn
                 background: Rectangle {
