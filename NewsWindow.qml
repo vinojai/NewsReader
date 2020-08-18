@@ -3,6 +3,9 @@ import QtQml 2.15
 import QtWebView 1.15
 
 NewsWindowForm {
+
+    property bool breaking: true
+
     SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
     Component.onCompleted: {
         print("Calling for News Headlines")
@@ -75,6 +78,24 @@ NewsWindowForm {
         target: searchBtn
         onClicked: {
             news.search(searchInput.text)
+        }
+    }
+
+    Connections {
+        target: breakingNewsTypeBtn
+        onPressed: {
+            breaking = true
+            news.setBreakingNews(breaking)
+            news.getHeadlines()
+        }
+    }
+
+    Connections {
+        target: allNewsTypeBtn
+        onPressed: {
+            breaking = false
+            news.setBreakingNews(breaking)
+            news.getHeadlines()
         }
     }
 }

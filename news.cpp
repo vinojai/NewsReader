@@ -15,7 +15,7 @@ NewsClass::NewsClass(QObject *parent) : QObject(parent)
     QCoreApplication::setOrganizationName("QIIP");
     QCoreApplication::setOrganizationDomain("qiip.com");
     QCoreApplication::setApplicationName("NewsReader");
-//    m_settings;
+    setBreakingNews(true);
 }
 
 bool NewsClass::isApiKeyExists()
@@ -37,7 +37,27 @@ void NewsClass::setApiKey(QString key)
     settings.setValue("apikey", key);
 }
 
+//void NewsClass::getHeadlines()
+//{
+//    QTextStream(stdout) << "Getting News Headlines";
+
+//    QString categoryString = QString("&category=%1").arg(m_category);
+
+//    QString apiKey = getApiKey();
+
+//    QUrl headlinesUrl(QString("http://%1/%2/%3?country=%4%5&apiKey=%6").arg(API_BASE, API_VERSION, HOME, COUNTRY, categoryString, apiKey));
+//    QNetworkRequest request;
+//    request.setUrl(headlinesUrl);
+//    request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
+//    m_networkManager->get(request);
+//}
+
 void NewsClass::getHeadlines()
+{
+    isBreakingnews() ? getTopHeadlines() : getAllHeadlines();
+}
+
+void NewsClass::getTopHeadlines()
 {
     QTextStream(stdout) << "Getting News Headlines";
 
@@ -52,14 +72,27 @@ void NewsClass::getHeadlines()
     m_networkManager->get(request);
 }
 
-void NewsClass::search(QString searchQuery) {
-    QTextStream(stdout) << "Search News Headlines";
+void NewsClass::getAllHeadlines()
+{
+    QTextStream(stdout) << "Getting News Headlines";
 
-//    QString categoryString = QString("&category=%1").arg(m_category);
+    QString categoryString = QString("&category=%1").arg(m_category);
 
     QString apiKey = getApiKey();
 
-    QUrl headlinesUrl(QString("http://%1/%2/%3?q=%4&apiKey=%6").arg(API_BASE, API_VERSION, HOME, searchQuery, apiKey));
+    QUrl headlinesUrl(QString("http://%1/%2/%3?&apiKey=%4").arg(API_BASE, API_VERSION, getNewsType(), apiKey));
+    QNetworkRequest request;
+    request.setUrl(headlinesUrl);
+    request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
+    m_networkManager->get(request);
+}
+
+void NewsClass::search(QString searchQuery) {
+    QTextStream(stdout) << "Search News Headlines";
+
+    QString apiKey = getApiKey();
+
+    QUrl headlinesUrl(QString("http://%1/%2/%3?q=%4&apiKey=%5").arg(API_BASE, API_VERSION, getNewsType(), searchQuery, apiKey));
     QNetworkRequest request;
     request.setUrl(headlinesUrl);
     request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
@@ -97,5 +130,3 @@ void NewsClass::onManagerFinished(QNetworkReply *reply)
         emit dataNotReady();
     }
 }
-
-

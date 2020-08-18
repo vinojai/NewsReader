@@ -25,6 +25,8 @@ class NewsClass : public QObject
 public:
     explicit NewsClass(QObject *parent = nullptr);
     Q_INVOKABLE void getHeadlines();
+    Q_INVOKABLE void getTopHeadlines();
+    Q_INVOKABLE void getAllHeadlines();
     Q_INVOKABLE QByteArray readHeadlines() {
         return articles;
     }
@@ -35,6 +37,19 @@ public:
         m_category = category;
     }
     Q_INVOKABLE void search(QString searchQuery);
+    Q_INVOKABLE void setBreakingNews (bool breaking) {
+        m_breakingNews = breaking;
+        isBreakingnews() ? setNewsType("top-headlines") : setNewsType("everything");
+    }
+    Q_INVOKABLE bool isBreakingnews() {
+        return m_breakingNews;
+    }
+    Q_INVOKABLE void setNewsType(QString type) {
+        m_newsType = type;
+    }
+    Q_INVOKABLE QString getNewsType() {
+        return m_newsType;
+    }
 
 public slots:
     void onManagerFinished(QNetworkReply *reply);
@@ -51,6 +66,8 @@ private:
     QJsonArray m_articles;
     QString m_category;
     QSettings m_settings;
+    bool m_breakingNews;
+    QString m_newsType;
 
 public:
     QByteArray articles;

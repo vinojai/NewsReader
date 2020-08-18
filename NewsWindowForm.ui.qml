@@ -6,6 +6,7 @@ import QtQuick.Extras 1.4
 import QtWebEngine 1.0
 import QtGraphicalEffects 1.0
 import QtWebView 1.14
+import QtQuick.Controls.Styles 1.4
 
 Page {
     id: newsWindow
@@ -16,6 +17,8 @@ Page {
     property alias newsSelection:newsSelection
     property alias searchBtn: searchBtn
     property alias searchInput: searchInput
+    property alias breakingNewsTypeBtn: breakingNewsTypeBtn
+    property alias allNewsTypeBtn: allNewsTypeBtn
 
     width: 1024
     height: 768
@@ -31,6 +34,54 @@ Page {
         ///
         Text {
             text: "test"
+        }
+
+        ButtonGroup {
+            buttons: newsType.children
+        }
+
+        Row {
+            id: newsType
+            anchors.verticalCenter: topBarRect.verticalCenter
+            anchors.left: topBarRect.left
+            anchors.leftMargin: 30
+            visible: false // The "everything" newapu feature appears to be broken
+            Button {
+                id: breakingNewsTypeBtn
+                background: Rectangle {
+                    implicitWidth: 80
+                    implicitHeight: 20
+                    color: breaking ? "orange" : "black"
+                    border.color: newsPalette.highlight
+                }
+                contentItem: Text {
+                    text: "Breaking News"
+                    font: searchBtn.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: breaking ? "black" : "orange"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+            }
+            Button {
+                id: allNewsTypeBtn
+                background: Rectangle {
+                    implicitWidth: 80
+                    implicitHeight: 20
+                    color: !breaking ? "orange" : "black"
+                    border.color: newsPalette.highlight
+                }
+                contentItem: Text {
+                    text: "All News"
+                    font: searchBtn.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: !breaking ? "black" : "orange"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+            }
         }
 
         ListView {
