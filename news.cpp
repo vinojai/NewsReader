@@ -109,7 +109,7 @@ void NewsClass::onManagerFinished(QNetworkReply *reply)
 
         QJsonArray headlines;
         QJsonObject headline;
-        for(int i=0; i<=m_articles.size(); i++) {
+        for(int i=0; i<=m_articles.size() - 1; i++) {
             qDebug() << m_articles[i];
             QJsonObject article = m_articles[i].toObject();
             qDebug() << article["author"].toString();
