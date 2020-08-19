@@ -6,6 +6,8 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QCoreApplication>
+#include <QScreen>
+#include <QGuiApplication>
 #include "news.h"
 
 NewsClass::NewsClass(QObject *parent) : QObject(parent)
@@ -16,6 +18,17 @@ NewsClass::NewsClass(QObject *parent) : QObject(parent)
     QCoreApplication::setOrganizationDomain("qiip.com");
     QCoreApplication::setApplicationName("NewsReader");
     setBreakingNews(true);
+    QScreen *screen = QGuiApplication::primaryScreen();
+    m_screenGeometry = screen->geometry();
+}
+
+QByteArray NewsClass::displayGeometery()
+{
+    QJsonObject obj;
+    obj["height"] = m_screenGeometry.height();
+    obj["width"] = m_screenGeometry.width();
+    QJsonDocument jdoc(obj);
+    return jdoc.toJson();
 }
 
 bool NewsClass::isApiKeyExists()
@@ -36,21 +49,6 @@ void NewsClass::setApiKey(QString key)
     QSettings settings("QIIP", "NewsReader");
     settings.setValue("apikey", key);
 }
-
-//void NewsClass::getHeadlines()
-//{
-//    QTextStream(stdout) << "Getting News Headlines";
-
-//    QString categoryString = QString("&category=%1").arg(m_category);
-
-//    QString apiKey = getApiKey();
-
-//    QUrl headlinesUrl(QString("http://%1/%2/%3?country=%4%5&apiKey=%6").arg(API_BASE, API_VERSION, HOME, COUNTRY, categoryString, apiKey));
-//    QNetworkRequest request;
-//    request.setUrl(headlinesUrl);
-//    request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
-//    m_networkManager->get(request);
-//}
 
 void NewsClass::getHeadlines()
 {

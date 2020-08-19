@@ -6,6 +6,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QSettings>
+#include <QScreen>
 #include "QNetworkAccessManager"
 
 #define API_BASE "newsapi.org"
@@ -50,6 +51,7 @@ public:
     Q_INVOKABLE QString getNewsType() {
         return m_newsType;
     }
+    Q_INVOKABLE QByteArray displayGeometery();
 
 public slots:
     void onManagerFinished(QNetworkReply *reply);
@@ -68,6 +70,7 @@ private:
     QSettings m_settings;
     bool m_breakingNews;
     QString m_newsType;
+    QRect  m_screenGeometry;
 
 public:
     QByteArray articles;

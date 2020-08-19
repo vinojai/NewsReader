@@ -1,4 +1,4 @@
-QT += quick webengine gui
+QT += quick webengine gui core
 
 CONFIG += c++11, app_bundle
 

@@ -20,8 +20,11 @@ Page {
     property alias breakingNewsTypeBtn: breakingNewsTypeBtn
     property alias allNewsTypeBtn: allNewsTypeBtn
 
-    width: 1024
-    height: 768
+//    width: 1024
+//    height: 768
+
+    height: displayHeight
+    width: displayWidth
 
     Rectangle {
         id: topBarRect
@@ -40,50 +43,6 @@ Page {
             buttons: newsType.children
         }
 
-        Row {
-            id: newsType
-            anchors.verticalCenter: topBarRect.verticalCenter
-            anchors.left: topBarRect.left
-            anchors.leftMargin: 30
-            visible: false // The "everything" NewsApi feature appears to be broken
-            Button {
-                id: breakingNewsTypeBtn
-                background: Rectangle {
-                    implicitWidth: 80
-                    implicitHeight: 20
-                    color: breaking ? "orange" : "black"
-                    border.color: newsPalette.highlight
-                }
-                contentItem: Text {
-                    text: "Breaking News"
-                    font: searchBtn.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: breaking ? "black" : "orange"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
-            }
-            Button {
-                id: allNewsTypeBtn
-                background: Rectangle {
-                    implicitWidth: 80
-                    implicitHeight: 20
-                    color: !breaking ? "orange" : "black"
-                    border.color: newsPalette.highlight
-                }
-                contentItem: Text {
-                    text: "All News"
-                    font: searchBtn.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: !breaking ? "black" : "orange"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
-            }
-        }
-
         ListView {
             id: newsSelection
             model: newsSelectionModel
@@ -93,6 +52,7 @@ Page {
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 5
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -250
 
             delegate: ItemDelegate {
                 width: metrics.width + 20
@@ -142,6 +102,52 @@ Page {
                 border.color: newsPalette.highlight
             }
         }
+
+        // newsType, (breaking or top-stories only works for search
+        Row {
+            id: newsType
+            anchors.verticalCenter: topBarRect.verticalCenter
+            anchors.left: searchInput.right
+            anchors.leftMargin: 30
+            visible: true //searchBtn.visible
+            Button {
+                id: breakingNewsTypeBtn
+                background: Rectangle {
+                    implicitWidth: 80
+                    implicitHeight: 20
+                    color: breaking ? "orange" : "black"
+                    border.color: newsPalette.highlight
+                }
+                contentItem: Text {
+                    text: "Breaking News"
+                    font: searchBtn.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: breaking ? "black" : "orange"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+            }
+            Button {
+                id: allNewsTypeBtn
+                background: Rectangle {
+                    implicitWidth: 80
+                    implicitHeight: 20
+                    color: !breaking ? "orange" : "black"
+                    border.color: newsPalette.highlight
+                }
+                contentItem: Text {
+                    text: "All News"
+                    font: searchBtn.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: !breaking ? "black" : "orange"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+            }
+        }
+
         Button {
             id: searchBtn
             anchors.left: searchInput.right
