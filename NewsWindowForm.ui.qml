@@ -41,12 +41,13 @@ Page {
             id: newsSelection
             model: newsSelectionModel
             orientation: ListView.Horizontal
-            width: 400
+            width: 425
             height: parent.height - 10
             anchors.left: topBarRect.left
             anchors.leftMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 5
+            interactive: false
             delegate: ItemDelegate {
                 width: metrics.width + 20
                 Text {
@@ -76,16 +77,18 @@ Page {
                     target: topMouse
                     onPressed: {
                         newsSelection.currentIndex = index
+                        searchInput.text = ""
                         news.setCategory(category)
                         news.getTopHeadlines()
                     }
                 }
             }
         }
+
         TextField {
             id: searchInput
             anchors.left: newsSelection.right
-            anchors.leftMargin:  200
+            anchors.leftMargin:  125
             color: "orange"
             placeholderText: "Search"
             placeholderTextColor: newsPalette.highlight

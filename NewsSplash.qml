@@ -17,7 +17,7 @@ NewsSplashForm {
             /// ???
 //            news.setApiKey("");  // Debug only
             /// ???
-            news.getHeadlines()
+            news.getTopHeadlines()
         }
     }
 

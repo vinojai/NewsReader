@@ -25,9 +25,9 @@ class NewsClass : public QObject
     Q_OBJECT
 public:
     explicit NewsClass(QObject *parent = nullptr);
-    Q_INVOKABLE void getHeadlines();
+//    Q_INVOKABLE void getHeadlines();
     Q_INVOKABLE void getTopHeadlines();
-    Q_INVOKABLE void getAllHeadlines();
+//    Q_INVOKABLE void getAllHeadlines();
     Q_INVOKABLE QByteArray readHeadlines() {
         return articles;
     }

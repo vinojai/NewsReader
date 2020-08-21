@@ -10,7 +10,7 @@ NewsWindowForm {
     Component.onCompleted: {
         print("Calling for News Headlines")
         news.setCategory("general")
-        news.getHeadlines()
+        news.getTopHeadlines()
         newsSelection.currentIndex = 0
     }
 
