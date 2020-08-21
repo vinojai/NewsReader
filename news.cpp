@@ -50,11 +50,6 @@ void NewsClass::setApiKey(QString key)
     settings.setValue("apikey", key);
 }
 
-//void NewsClass::getHeadlines()
-//{
-//    isBreakingnews() ? getTopHeadlines() : getAllHeadlines();
-//}
-
 void NewsClass::getTopHeadlines()
 {
     QTextStream(stdout) << "Getting News Headlines";
@@ -69,21 +64,6 @@ void NewsClass::getTopHeadlines()
     request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
     m_networkManager->get(request);
 }
-
-//void NewsClass::getAllHeadlines()
-//{
-//    QTextStream(stdout) << "Getting News All Headlines";
-
-//    QString categoryString = QString("&category=%1").arg(m_category);
-
-//    QString apiKey = getApiKey();
-
-//    QUrl headlinesUrl(QString("http://%1/%2/%3?&apiKey=%4").arg(API_BASE, API_VERSION, getNewsType(), apiKey));
-//    QNetworkRequest request;
-//    request.setUrl(headlinesUrl);
-//    request.setRawHeader("User-Agent", "MyOwnBrowser 1.0");
-//    m_networkManager->get(request);
-//}
 
 void NewsClass::search(QString searchQuery) {
     QTextStream(stdout) << "Search News Headlines";
@@ -114,17 +94,24 @@ void NewsClass::onManagerFinished(QNetworkReply *reply)
 
         QJsonArray headlines;
         QJsonObject headline;
-        for(int i=0; i<=m_articles.size() - 1; i++) {
-            qDebug() << m_articles[i];
-            QJsonObject article = m_articles[i].toObject();
-            qDebug() << article["author"].toString();
-            headline["author"] = article["author"].toString();
-            headline["title"] = article["title"].toString();
-            headline["url"] = article["url"].toString();
-            headline["urlToImage"] = article["urlToImage"].toString();
-            headline["publishedAt"] = article["publishedAt"].toString();
+        if(m_articles.size() < 1)
+        {
+            headline["title"] = QString("No Results Found");
             headlines.append(headline);
+        } else {
+            for(int i=0; i<=m_articles.size() - 1; i++) {
+                qDebug() << m_articles[i];
+                QJsonObject article = m_articles[i].toObject();
+                qDebug() << article["author"].toString();
+                headline["author"] = article["author"].toString();
+                headline["title"] = article["title"].toString();
+                headline["url"] = article["url"].toString();
+                headline["urlToImage"] = article["urlToImage"].toString();
+                headline["publishedAt"] = article["publishedAt"].toString();
+                headlines.append(headline);
+            }
         }
+
         QJsonDocument articlesDoc(headlines);
         articles = articlesDoc.toJson();
 
