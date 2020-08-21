@@ -86,7 +86,7 @@ NewsWindowForm {
         onPressed: {
             breaking = true
             news.setBreakingNews(breaking)
-            news.getHeadlines()
+            news.search(searchInput.text)
         }
     }
 
@@ -95,7 +95,7 @@ NewsWindowForm {
         onPressed: {
             breaking = false
             news.setBreakingNews(breaking)
-            news.getHeadlines()
+            news.search(searchInput.text)
         }
     }
 }

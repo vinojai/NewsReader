@@ -72,7 +72,7 @@ void NewsClass::getTopHeadlines()
 
 void NewsClass::getAllHeadlines()
 {
-    QTextStream(stdout) << "Getting News Headlines";
+    QTextStream(stdout) << "Getting News All Headlines";
 
     QString categoryString = QString("&category=%1").arg(m_category);
 
@@ -89,6 +89,11 @@ void NewsClass::search(QString searchQuery) {
     QTextStream(stdout) << "Search News Headlines";
 
     QString apiKey = getApiKey();
+    QString neusUrl = isBreakingnews() ?
+        QString("http://%1/%2/%3?q=%4&apiKey=%5").arg(API_BASE, API_VERSION, getNewsType(), searchQuery, apiKey) :
+        QString("http://%1/%2/%3?q=%4&apiKey=%4").arg(API_BASE, API_VERSION, getNewsType(), searchQuery, apiKey);
+
+    //QUrl headlinesUrl;
 
     QUrl headlinesUrl(QString("http://%1/%2/%3?q=%4&apiKey=%5").arg(API_BASE, API_VERSION, getNewsType(), searchQuery, apiKey));
     QNetworkRequest request;

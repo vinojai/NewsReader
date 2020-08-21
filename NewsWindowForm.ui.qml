@@ -77,7 +77,7 @@ Page {
                     onPressed: {
                         newsSelection.currentIndex = index
                         news.setCategory(category)
-                        news.getHeadlines()
+                        news.getTopHeadlines()
                     }
                 }
             }
