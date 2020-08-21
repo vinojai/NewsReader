@@ -101,7 +101,6 @@ Page {
             }
         }
 
-        // newsType, (breaking or top-stories only works for search
         Row {
             id: newsType
             anchors.verticalCenter: topBarRect.verticalCenter
@@ -228,20 +227,44 @@ Page {
                     anchors.left: image.right
                     anchors.leftMargin: 10
                     anchors.top: delegateSep.bottom
-                    anchors.bottom: parent.bottom
+//                    anchors.bottom: parent.bottom
                     font.pointSize: 12
                     color: (delegate.highlighted) ? newsPalette.highlightedText : newsPalette.windowText
                     text: modelData.title
                 }
                 Label {
+                    id: date
+                    anchors.left: image.right
+                    anchors.top: title.bottom
+                    anchors.leftMargin: 10
+                    font.pointSize: 12
+                    font.italic: true
+                    opacity: .50
+                    color: (delegate.highlighted) ? newsPalette.highlightedText : newsPalette.windowText
+                    text: modelData.date
+                }
+                Label {
+                    id: time
+                    anchors.left: date.right
+                    anchors.top: title.bottom
+                    anchors.leftMargin: 10
+                    font.pointSize: 12
+                    font.italic: true
+                    opacity: .50
+                    color: (delegate.highlighted) ? newsPalette.highlightedText : newsPalette.windowText
+                    text: modelData.time
+                }
+                Label {
                     id: author
                     anchors.left: image.right
                     anchors.leftMargin: 10
-                    anchors.top: title.bottom
-                    anchors.topMargin: 30
                     anchors.bottom: parent.bottom
-                    font.pointSize: 8
-                    color: title.color
+                    anchors.bottomMargin: 5
+                    font.pointSize: 12
+                    font.italic: true
+                    opacity: .50
+                    color: (delegate.highlighted) ? newsPalette.highlightedText : newsPalette.windowText
+                    visible: modelData.author.length > 0 ? true : false
                     text: "By: " + modelData.author
                 }
                 Connections {

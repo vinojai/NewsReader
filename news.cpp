@@ -8,6 +8,7 @@
 #include <QCoreApplication>
 #include <QScreen>
 #include <QGuiApplication>
+//#include <QLocale>
 #include "news.h"
 
 NewsClass::NewsClass(QObject *parent) : QObject(parent)
@@ -107,7 +108,14 @@ void NewsClass::onManagerFinished(QNetworkReply *reply)
                 headline["title"] = article["title"].toString();
                 headline["url"] = article["url"].toString();
                 headline["urlToImage"] = article["urlToImage"].toString();
-                headline["publishedAt"] = article["publishedAt"].toString();
+                //headline["publishedAt"] = article["publishedAt"].toString();
+                qDebug() << article["publishedAt"].toString();
+                //QLocale locale(QLocale::English, QLocale::UnitedStates);
+                QDateTime dt =  QDateTime::fromString(QString(article["publishedAt"].toString()), Qt::ISODate);
+                QDate date = dt.date();
+                headline["date"] = date.toString();
+                QTime time = dt.time();
+                headline["time"] = time.toString();
                 headlines.append(headline);
             }
         }
