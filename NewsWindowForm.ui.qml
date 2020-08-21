@@ -23,8 +23,8 @@ Page {
 //    width: 1024
 //    height: 768
 
-    height: displayHeight
-    width: displayWidth
+//    height: displayHeight
+//    width: displayWidth + 200
 
     Rectangle {
         id: topBarRect
@@ -52,7 +52,7 @@ Page {
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 5
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -250
+            anchors.horizontalCenterOffset: -200
 
             delegate: ItemDelegate {
                 width: metrics.width + 20
@@ -95,6 +95,7 @@ Page {
             color: "orange"
             placeholderText: "Search"
             placeholderTextColor: newsPalette.highlight
+            visible: true
             background: Rectangle {
                 implicitWidth: 200
                 implicitHeight: 40
@@ -107,9 +108,11 @@ Page {
         Row {
             id: newsType
             anchors.verticalCenter: topBarRect.verticalCenter
+            anchors.verticalCenterOffset: 5
             anchors.left: searchInput.right
-            anchors.leftMargin: 30
-            visible: true //searchBtn.visible
+            anchors.leftMargin: 10
+            height: searchInput.height
+            visible: searchInput.text.length > 0
             Button {
                 id: breakingNewsTypeBtn
                 background: Rectangle {
@@ -150,13 +153,13 @@ Page {
 
         Button {
             id: searchBtn
-            anchors.left: searchInput.right
+            anchors.left: newsType.right
+            anchors.verticalCenterOffset: 5
             text: "Go!"
-            width: 50
             visible: searchInput.text.length
             background: Rectangle {
                 implicitWidth: 200
-                implicitHeight: 40
+                implicitHeight: 20
                 color: "black"
                 border.color: newsPalette.highlight
             }

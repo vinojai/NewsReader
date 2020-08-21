@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.15
 
 Window {
+
     SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
     id: mainWindow
     visible: true
@@ -12,6 +13,9 @@ Window {
     title: qsTr("And now the News")
 
     Component.onCompleted: {
+        var geometry =  JSON.parse(news.displayGeometery())
+        mainWindow.height = geometry.height - 300
+        mainWindow.width = geometry.width - 400
         newsHeadlines.running = news.isApiKeySet()
     }
 

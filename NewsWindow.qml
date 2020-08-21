@@ -5,8 +5,6 @@ import QtWebView 1.15
 NewsWindowForm {
 
     property bool breaking: true
-    property int displayHeight
-    property int displayWidth
 
     SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
     Component.onCompleted: {
@@ -15,9 +13,6 @@ NewsWindowForm {
         news.getHeadlines()
         newsSelection.currentIndex = 0
         print ("--> " + news.displayGeometery())
-        var geometry =  JSON.parse(news.displayGeometery())
-        displayHeight = geometry.height
-        displayWidth = geometry.width
     }
 
     ListModel {
