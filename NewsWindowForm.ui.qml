@@ -157,14 +157,14 @@ Page {
             background: Rectangle {
                 implicitWidth: 40
                 implicitHeight: 20
-                color: "black"
+                color: !searchActive ? "black" : "orange"
                 border.color: newsPalette.highlight
             }
             contentItem: Text {
                 text: searchBtn.text
                 font: searchBtn.font
                 opacity: enabled ? 1.0 : 0.3
-                color: "orange"
+                color: searchActive ? "black" : "orange"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
@@ -264,7 +264,7 @@ Page {
                     font.italic: true
                     opacity: .50
                     color: (delegate.highlighted) ? newsPalette.highlightedText : newsPalette.windowText
-                    visible: modelData.author.length > 0 ? true : false
+                    visible: modelData.title !== "No Results Found" ? true : false
                     text: "By: " + modelData.author
                 }
                 Connections {

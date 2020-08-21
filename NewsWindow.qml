@@ -5,6 +5,7 @@ import QtWebView 1.15
 NewsWindowForm {
 
     property bool breaking: true
+    property bool searchActive: false
 
     SystemPalette {id: newsPalette; colorGroup: SystemPalette.Active }
     Component.onCompleted: {
@@ -79,6 +80,8 @@ NewsWindowForm {
 
         onEditingFinished: {
             news.search(searchInput.text)
+            searchActive = true
+            resetSearchBtn.start()
         }
 
 
@@ -88,6 +91,8 @@ NewsWindowForm {
         target: searchBtn
         onClicked: {
             news.search(searchInput.text)
+            searchActive = true
+            resetSearchBtn.start()
         }
     }
 
@@ -97,6 +102,8 @@ NewsWindowForm {
             breaking = true
             news.setBreakingNews(breaking)
             news.search(searchInput.text)
+            searchActive = true
+            resetSearchBtn.start()
         }
     }
 
@@ -106,6 +113,16 @@ NewsWindowForm {
             breaking = false
             news.setBreakingNews(breaking)
             news.search(searchInput.text)
+            searchActive = true
+            resetSearchBtn.start()
+        }
+    }
+    Timer {
+        id:resetSearchBtn
+        repeat: no
+        interval: 500
+        onTriggered: {
+            searchActive = false
         }
     }
 }
