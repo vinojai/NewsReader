@@ -12,7 +12,6 @@ NewsWindowForm {
         news.setCategory("general")
         news.getHeadlines()
         newsSelection.currentIndex = 0
-        print ("--> " + news.displayGeometery())
     }
 
     ListModel {

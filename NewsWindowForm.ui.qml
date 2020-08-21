@@ -20,12 +20,6 @@ Page {
     property alias breakingNewsTypeBtn: breakingNewsTypeBtn
     property alias allNewsTypeBtn: allNewsTypeBtn
 
-//    width: 1024
-//    height: 768
-
-//    height: displayHeight
-//    width: displayWidth + 200
-
     Rectangle {
         id: topBarRect
         height: 40
@@ -47,13 +41,12 @@ Page {
             id: newsSelection
             model: newsSelectionModel
             orientation: ListView.Horizontal
-            width: newsWindow.width - 500
+            width: 400
             height: parent.height - 10
+            anchors.left: topBarRect.left
+            anchors.leftMargin: 50
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 5
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -200
-
             delegate: ItemDelegate {
                 width: metrics.width + 20
                 Text {
@@ -92,6 +85,7 @@ Page {
         TextField {
             id: searchInput
             anchors.left: newsSelection.right
+            anchors.leftMargin:  200
             color: "orange"
             placeholderText: "Search"
             placeholderTextColor: newsPalette.highlight
@@ -109,7 +103,7 @@ Page {
             id: newsType
             anchors.verticalCenter: topBarRect.verticalCenter
             anchors.verticalCenterOffset: 5
-            anchors.left: searchInput.right
+            anchors.left: searchBtn.right
             anchors.leftMargin: 10
             height: searchInput.height
             visible: searchInput.text.length > 0
@@ -153,12 +147,13 @@ Page {
 
         Button {
             id: searchBtn
-            anchors.left: newsType.right
-            anchors.verticalCenterOffset: 5
+            anchors.left: searchInput.right
+            anchors.leftMargin: 10
+            anchors.top: newsType.top
             text: "Go!"
             visible: searchInput.text.length
             background: Rectangle {
-                implicitWidth: 200
+                implicitWidth: 40
                 implicitHeight: 20
                 color: "black"
                 border.color: newsPalette.highlight

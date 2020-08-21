@@ -15,7 +15,7 @@ Window {
     Component.onCompleted: {
         var geometry =  JSON.parse(news.displayGeometery())
         mainWindow.height = geometry.height - 300
-        mainWindow.width = geometry.width - 400
+        mainWindow.width = geometry.width - 800
         newsHeadlines.running = news.isApiKeySet()
     }
 
