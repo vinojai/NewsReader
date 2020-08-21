@@ -75,6 +75,16 @@ NewsWindowForm {
     }
 
     Connections {
+        target: searchInput
+
+        onEditingFinished: {
+            news.search(searchInput.text)
+        }
+
+
+    }
+
+    Connections {
         target: searchBtn
         onClicked: {
             news.search(searchInput.text)
